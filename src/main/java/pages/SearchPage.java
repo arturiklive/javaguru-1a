@@ -12,7 +12,6 @@ import java.util.Random;
 
 public class SearchPage {
     static int randomItemNumber =  new Random().nextInt(10 - 1 + 1) + 1;
-    private static final String BASE_URL = "https://www.1a.lv/";
     private static final By COOKIES_LINK = By.xpath("//a[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']");
     private static final By SEARCH_FIELD_LINK = By.xpath("//input[@id='q']");
     private static final By SEARCH_DO_LINK = By.xpath("//button[@class='main-search-submit']");
@@ -22,9 +21,8 @@ public class SearchPage {
     public SearchPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    public void openPage(){
-        driver.get(BASE_URL);
+    public void openPage(String url){
+        driver.get(url);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(SEARCH_FIELD_LINK));
         clickCookiesAgree();

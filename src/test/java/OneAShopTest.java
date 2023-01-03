@@ -25,7 +25,7 @@ public class OneAShopTest {
         ShopItem item = new ShopItem("laptop", "Asus");
 
         SearchPage searchPage = new SearchPage(driver);
-        searchPage.openPage();
+        searchPage.openPage("https://www.1a.lv/");
         searchPage.doSearch(item.getItemType());
         searchPage.selectBrand(item.getBrand());
         searchPage.selectItem();

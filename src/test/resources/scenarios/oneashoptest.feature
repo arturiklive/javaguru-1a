@@ -1,7 +1,39 @@
 Feature: Purchasing 1 random item and verifying name and price
 
   Scenario:
-    Given Go to "https://www.ss.com/lv/"
-    And Click on Suņi, kucēni
-    And Enter age "1"
-    Then Validate if age has value "1" entered
+    Given Go to "https://www.1a.lv/"
+    And Make a search for product type "laptop"
+    And Select brand "Asus"
+    And Get random link and select one product
+
+    When Verify if Product Page is opened
+    Then Get product name
+    And Get product price
+    And Add product to cart
+    And Verify if purchase is succeed
+    And Click to go to Cart Page
+
+    When Verify if Cart Page is opened
+    Then Get product name in Cart
+    And Get product price in Cart
+    And Click to go to Checkout Page
+
+    When Verify if Checkout Page is opened
+    Then In email field enter "tehnique111@inbox.lv"
+    And Click to go to Shipping Page
+
+    When Verify if Shipping Page is opened
+    Then Select get product in Store
+    And Select Store
+    And Enter purchaser name "Arturs"
+    And Enter purchaser lastname "Tehnique"
+    And Enter purchaser phone "29999999"
+    And Click to go to Billing Page
+
+    When Verify if Billing Page is opened
+    Then Select Pay in Store option
+    And Get total price
+
+    When Compare that product name contains name from cart
+    And Compare that product price contains price from cart
+    And Compare that total price contains product price
