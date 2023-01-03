@@ -28,6 +28,7 @@ Feature: Purchasing 1 random item and verifying name and price
     And Enter purchaser name "Arturs"
     And Enter purchaser lastname "Tehnique"
     And Enter purchaser phone "29999999"
+    And Click to save data before going to Billing Page
     And Click to go to Billing Page
 
     When Verify if Billing Page is opened

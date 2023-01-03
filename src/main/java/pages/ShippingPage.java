@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +14,7 @@ public class ShippingPage {
     private static final By PURCHASER_NAME = By.xpath("//input[@id='address_first_name']");
     private static final By PURCHASER_LASTNAME = By.xpath("//input[@id='address_last_name']");
     private static final By PURCHASER_PHONE = By.xpath("//input[@id='address_phone_number']");
-    private static final By BILLING_PAGE_LINK = By.xpath("//button[@class='main-button upcase fr small-radius button-min-width checkout-shipping-continue-button']");
+    private static final By BILLING_PAGE_LINK = By.cssSelector("button[type='submit']");
     private WebDriver driver;
 
     public ShippingPage(WebDriver driver) {
@@ -41,12 +42,18 @@ public class ShippingPage {
     public void enterPurchaserPhone(String phone){
         driver.findElement(PURCHASER_PHONE).sendKeys(phone);
     }
+    public void clickToSaveBeforeBilling() throws InterruptedException {
+        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.elementToBeClickable(BILLING_PAGE_LINK));
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", driver.findElement(BILLING_PAGE_LINK));
+    }
     public void clickToBilling() throws InterruptedException {
-        driver.findElement(BILLING_PAGE_LINK).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(BILLING_PAGE_LINK));
-        Thread.sleep(5000);
-        driver.findElement(BILLING_PAGE_LINK).click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.elementToBeClickable(BILLING_PAGE_LINK));
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", driver.findElement(BILLING_PAGE_LINK));
     }
 }

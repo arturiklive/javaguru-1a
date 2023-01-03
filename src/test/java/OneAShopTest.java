@@ -35,8 +35,6 @@ public class OneAShopTest {
 
         String getProductName = productPage.getProductName();
         String getProductPrice = productPage.getProductPrice();
-        System.out.println(getProductName);
-        System.out.println(getProductPrice);
 
         productPage.addProductToCart();
         Assertions.assertThat(productPage.isPurchaseSucceed()).isTrue();
@@ -47,8 +45,6 @@ public class OneAShopTest {
 
         String getProductNameInCart = cartPage.getProductNameInCart();
         String getProductPriceInCart = cartPage.getProductPriceInCart();
-        System.out.println(getProductNameInCart);
-        System.out.println(getProductPriceInCart);
 
         cartPage.setGoToCheckout();
 
@@ -64,13 +60,13 @@ public class OneAShopTest {
         shippingPage.enterPurchaserName(user.getName());
         shippingPage.enterPurchaserLastname(user.getLastName());
         shippingPage.enterPurchaserPhone(user.getPhoneNumber());
+        shippingPage.clickToSaveBeforeBilling();
         shippingPage.clickToBilling();
 
         BillingPage billingPage = new BillingPage(driver);
         Assertions.assertThat(billingPage.billingPageIsOpened()).isTrue();
         billingPage.selectPayInStore();
         String getProductTotalPrice = billingPage.getTotalPrice();
-        System.out.println(getProductTotalPrice);
 
         SoftAssertions soft = new SoftAssertions();
         soft.assertThat(getProductNameInCart).contains(getProductName);

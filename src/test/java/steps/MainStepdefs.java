@@ -28,12 +28,12 @@ public class MainStepdefs {
     }
 
     @And("Select brand {string}")
-    public void selectBrand(String brand) {
+    public void selectBrand(String brand) throws InterruptedException {
         searchPage.selectBrand(brand);
     }
 
     @And("Get random link and select one product")
-    public void getRandomLinkAndSelectOneProduct() {
+    public void getRandomLinkAndSelectOneProduct() throws InterruptedException {
         searchPage.selectItem();
     }
 

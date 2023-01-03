@@ -9,7 +9,7 @@ import java.time.Duration;
 
 public class BillingPage {
     private static final By SELECT_PAY_IN_STORE = By.xpath("(//ul[@class='menu menu--checkout']//label)[2]");
-    private static final By TOTAL_PRICE = By.xpath("//div[@class='price fr']");
+    private static final By TOTAL_PRICE = By.xpath("//span[@class='checkout-order-summary-total__price']");
     private WebDriver driver;
 
     public BillingPage(WebDriver driver) {
@@ -26,7 +26,7 @@ public class BillingPage {
         driver.findElement(SELECT_PAY_IN_STORE).click();
     }
     public String getTotalPrice(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         wait.until(ExpectedConditions.visibilityOfElementLocated(TOTAL_PRICE));
         return driver.findElement(TOTAL_PRICE).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
