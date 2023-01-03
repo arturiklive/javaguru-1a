@@ -28,10 +28,10 @@ public class ProductPage {
         driver.findElement(PRODUCT_ADD_LINK).click();
     }
     public String getProductName(){
-        return driver.findElement(PRODUCT_NAME_LINK).getAttribute("innerHTML");
+        return driver.findElement(PRODUCT_NAME_LINK).getAttribute("innerHTML").replaceAll("[ \t\n\r]*", "");
     }
     public String getProductPrice(){
-        return driver.findElement(PRODUCT_PRICE_LINK).getText();
+        return driver.findElement(PRODUCT_PRICE_LINK).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
     public boolean isPurchaseSucceed(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

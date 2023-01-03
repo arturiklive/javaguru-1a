@@ -23,32 +23,35 @@ public class SearchPage {
         this.driver = driver;
     }
 
-    public void openPage() throws InterruptedException {
+    public void openPage(){
         driver.get(BASE_URL);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(SEARCH_FIELD_LINK));
-        Thread.sleep(1500);
         clickCookiesAgree();
     }
     public void clickCookiesAgree(){
         if (driver.findElement(COOKIES_LINK).isDisplayed()) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             wait.until(ExpectedConditions.visibilityOfElementLocated(COOKIES_LINK));
             driver.findElement(COOKIES_LINK).click();
         }
     }
-    public void doSearch(String item) throws InterruptedException {
+    public void doSearch(String item){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SEARCH_FIELD_LINK));
         driver.findElement(SEARCH_FIELD_LINK).sendKeys(item);
-        Thread.sleep(1500);
         driver.findElement(SEARCH_DO_LINK).click();
-        Thread.sleep(1500);
     }
-    public void selectItem() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void selectBrand(String brand){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='ks-filter-link__label']")));
+        driver.findElement(By.xpath("//span[contains(@class, 'ks-filter-link__label') and text() = '"+brand+"']")).click();
+    }
+    public void selectItem(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(RANDOM_ITEM_LINK));
         WebElement clickable_element = driver.findElement(RANDOM_ITEM_LINK);
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click();", clickable_element);
-        Thread.sleep(10500);
     }
 }
