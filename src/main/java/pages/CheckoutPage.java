@@ -1,6 +1,6 @@
 package pages;
 
-import driver.ShopWaitings;
+import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,11 +13,11 @@ public class CheckoutPage {
         this.driver = driver;
     }
     public boolean checkoutPageIsOpened(){
-        ShopWaitings.enterElementTime(driver, PURCHASE_EMAIL, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PURCHASE_EMAIL, 10);
         return true;
     }
     public void purchaseEnterEmail(String email){
-        ShopWaitings.enterElementTime(driver, PURCHASE_EMAIL, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PURCHASE_EMAIL, 10);
         driver.findElement(PURCHASE_EMAIL).sendKeys(email);
     }
     public void pressButtonAfterEmail(){

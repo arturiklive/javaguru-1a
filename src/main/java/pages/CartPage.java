@@ -1,7 +1,7 @@
 package pages;
 
 import driver.ShopJsClicks;
-import driver.ShopWaitings;
+import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,7 +15,7 @@ public class CartPage {
         this.driver = driver;
     }
     public boolean cartIsOpened(){
-        ShopWaitings.enterElementTime(driver, PRODUCT_NAME_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PRODUCT_NAME_LINK, 10);
         return true;
     }
     public String getProductNameInCart(){

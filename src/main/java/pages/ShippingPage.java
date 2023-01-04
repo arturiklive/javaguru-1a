@@ -1,7 +1,7 @@
 package pages;
 
 import driver.ShopJsClicks;
-import driver.ShopWaitings;
+import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,14 +18,14 @@ public class ShippingPage {
         this.driver = driver;
     }
     public boolean shippingPageIsOpened(){
-        ShopWaitings.enterElementTime(driver, GET_IN_STORE_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, GET_IN_STORE_LINK, 10);
         return true;
     }
     public void selectGetInStore(){
         driver.findElement(GET_IN_STORE_LINK).click();
     }
     public void selectStore(){
-        ShopWaitings.enterElementTime(driver, SELECT_STORE_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, SELECT_STORE_LINK, 10);
         driver.findElement(SELECT_STORE_LINK).click();
     }
     public void enterPurchaserName(String name){
@@ -39,12 +39,12 @@ public class ShippingPage {
     }
     public void clickToSaveBeforeBilling() throws InterruptedException {
         Thread.sleep(2000);
-        ShopWaitings.enterElementTime(driver, BILLING_PAGE_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, BILLING_PAGE_LINK, 10);
         ShopJsClicks.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
     public void clickToBilling() throws InterruptedException {
         Thread.sleep(2000);
-        ShopWaitings.enterElementTime(driver, BILLING_PAGE_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, BILLING_PAGE_LINK, 10);
         ShopJsClicks.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
 }

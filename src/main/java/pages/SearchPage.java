@@ -1,7 +1,7 @@
 package pages;
 
 import driver.ShopJsClicks;
-import driver.ShopWaitings;
+import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,27 +20,27 @@ public class SearchPage {
     }
     public void openPage(String url){
         driver.get(url);
-        ShopWaitings.enterElementTime(driver, SEARCH_FIELD_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, SEARCH_FIELD_LINK, 10);
         clickCookiesAgree();
     }
     public void clickCookiesAgree(){
         if (driver.findElement(COOKIES_LINK).isDisplayed()) {
-            ShopWaitings.enterElementTime(driver, COOKIES_LINK, 10);
+            ShopWaitingUtils.waitUntilElem(driver, COOKIES_LINK, 10);
             driver.findElement(COOKIES_LINK).click();
         }
     }
     public void doSearch(String item){
-        ShopWaitings.enterElementTime(driver, SEARCH_FIELD_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, SEARCH_FIELD_LINK, 10);
         driver.findElement(SEARCH_FIELD_LINK).sendKeys(item);
         driver.findElement(SEARCH_DO_LINK).click();
     }
     public void selectBrand(String brand){
         String xpathLink = "//a[@class='ks-filter-link']//span[text()='"+brand+"']";
-        ShopWaitings.enterElementTime(driver, By.xpath(xpathLink), 10);
+        ShopWaitingUtils.waitUntilElem(driver, By.xpath(xpathLink), 10);
         ShopJsClicks.javaScriptClick(driver, By.xpath(xpathLink));
     }
     public void selectItem(){
-        ShopWaitings.enterElementTime(driver, RANDOM_ITEM_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, RANDOM_ITEM_LINK, 10);
         ShopJsClicks.javaScriptClick(driver, RANDOM_ITEM_LINK);
     }
 }

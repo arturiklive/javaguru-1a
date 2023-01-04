@@ -1,7 +1,7 @@
 package pages;
 
 import driver.ShopJsClicks;
-import driver.ShopWaitings;
+import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,23 +18,23 @@ public class ProductPage {
         this.driver = driver;
     }
     public boolean isDisplayed(){
-        ShopWaitings.enterElementTime(driver, PRODUCT_VALIDATE_SPACE, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PRODUCT_VALIDATE_SPACE, 10);
         return true;
     }
     public void addProductToCart(){
-        ShopWaitings.enterElementTime(driver, PRODUCT_ADD_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PRODUCT_ADD_LINK, 10);
         ShopJsClicks.javaScriptClick(driver, PRODUCT_ADD_LINK);
     }
     public String getProductName(){
-        ShopWaitings.enterElementTime(driver, PRODUCT_NAME_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PRODUCT_NAME_LINK, 10);
         return driver.findElement(PRODUCT_NAME_LINK).getAttribute("innerHTML").replaceAll("[ \t\n\r]*", "");
     }
     public String getProductPrice(){
-        ShopWaitings.enterElementTime(driver, PRODUCT_PRICE_LINK, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PRODUCT_PRICE_LINK, 10);
         return driver.findElement(PRODUCT_PRICE_LINK).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
     public boolean isPurchaseSucceed(){
-        ShopWaitings.enterElementTime(driver, PURCHASE_VALIDATE_SPACE, 10);
+        ShopWaitingUtils.waitUntilElem(driver, PURCHASE_VALIDATE_SPACE, 10);
         return true;
     }
     public void goToCartClick(){

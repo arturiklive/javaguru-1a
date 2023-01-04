@@ -1,6 +1,6 @@
 package pages;
 
-import driver.ShopWaitings;
+import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,15 +13,15 @@ public class BillingPage {
         this.driver = driver;
     }
     public boolean billingPageIsOpened(){
-        ShopWaitings.enterElementTime(driver, SELECT_PAY_IN_STORE, 10);
+        ShopWaitingUtils.waitUntilElem(driver, SELECT_PAY_IN_STORE, 10);
         return true;
     }
     public void selectPayInStore(){
-        ShopWaitings.enterElementTime(driver, SELECT_PAY_IN_STORE, 10);
+        ShopWaitingUtils.waitUntilElem(driver, SELECT_PAY_IN_STORE, 10);
         driver.findElement(SELECT_PAY_IN_STORE).click();
     }
     public String getTotalPrice(){
-        ShopWaitings.enterElementTime(driver, TOTAL_PRICE, 10);
+        ShopWaitingUtils.waitUntilElem(driver, TOTAL_PRICE, 10);
         return driver.findElement(TOTAL_PRICE).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
 }

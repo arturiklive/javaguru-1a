@@ -36,5 +36,5 @@ Feature: Purchasing 1 random item and verifying name and price
     And Get total price
 
     When Compare that product name contains name from cart
-    And Compare that product price contains price from cart
-    And Compare that total price contains product price
+    Then Compare that product price contains price from cart
+    Then Compare that total price contains product price
