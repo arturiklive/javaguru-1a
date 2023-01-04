@@ -46,23 +46,15 @@ public class MainStepdefs {
         searchPage.selectBrand(brand);
     }
 
-    @And("Get random link and select one product")
+    @When("Select one random product")
     public void getRandomLinkAndSelectOneProduct(){
         searchPage.selectItem();
     }
 
-    @When("Verify if Product Page is opened")
+    @Then("Verify if Product Page is opened")
     public void verifyIfProductPageIsOpened() {
         Assertions.assertThat(productPage.isDisplayed()).isTrue();
-    }
-
-    @Then("Get product name")
-    public void getProductName() {
         actualProductName = productPage.getProductName();
-    }
-
-    @And("Get product price")
-    public void getProductPrice() {
         actualProductPrice = productPage.getProductPrice();
     }
 
@@ -75,52 +67,44 @@ public class MainStepdefs {
         Assertions.assertThat(productPage.isPurchaseSucceed()).isTrue();
     }
 
-    @And("Click to go to Cart Page")
+    @When("Click to go to Cart Page")
     public void clickToGoToCartPage() {
         productPage.goToCartClick();
     }
 
-    @When("Verify if Cart Page is opened")
+    @Then("Verify if Cart Page is opened")
     public void verifyIfCartPageIsOpened() {
         Assertions.assertThat(cartPage.cartIsOpened()).isTrue();
-    }
-
-    @Then("Get product name in Cart")
-    public void getProductNameInCart() {
         expectedNameInCart = cartPage.getProductNameInCart();
-    }
-
-    @And("Get product price in Cart")
-    public void getProductPriceInCart() {
         expectedPriceInCart = cartPage.getProductPriceInCart();
     }
 
-    @And("Click to go to Checkout Page")
+    @When("Click to go to Checkout Page")
     public void clickToGoToCheckoutPage() {
         cartPage.setGoToCheckout();
     }
 
-    @When("Verify if Checkout Page is opened")
+    @Then("Verify if Checkout Page is opened")
     public void verifyIfCheckoutPageIsOpened() {
         Assertions.assertThat(checkoutPage.checkoutPageIsOpened()).isTrue();
     }
 
-    @Then("In email field enter {string}")
+    @And("In email field enter {string}")
     public void inEmailFieldEnter(String email) {
         checkoutPage.purchaseEnterEmail(email);
     }
 
-    @And("Click to go to Shipping Page")
+    @When("Click to go to Shipping Page")
     public void clickToGoToShippingPage() {
         checkoutPage.pressButtonAfterEmail();
     }
 
-    @When("Verify if Shipping Page is opened")
+    @Then("Verify if Shipping Page is opened")
     public void verifyIfShippingPageIsOpened() {
         Assertions.assertThat(shippingPage.shippingPageIsOpened()).isTrue();
     }
 
-    @Then("Select get product in Store")
+    @And("Select get product in Store")
     public void selectGetProductInStore() {
         shippingPage.selectGetInStore();
     }
@@ -150,23 +134,19 @@ public class MainStepdefs {
         shippingPage.clickToSaveBeforeBilling();
     }
 
-    @And("Click to go to Billing Page")
+    @When("Click to go to Billing Page")
     public void clickToGoToBillingPage() throws InterruptedException {
         shippingPage.clickToBilling();
     }
 
-    @When("Verify if Billing Page is opened")
+    @Then("Verify if Billing Page is opened")
     public void verifyIfBillingPageIsOpened() {
         Assertions.assertThat(billingPage.billingPageIsOpened()).isTrue();
     }
 
-    @Then("Select Pay in Store option")
+    @And("Select Pay in Store option")
     public void selectPayInStoreOption() {
         billingPage.selectPayInStore();
-    }
-
-    @And("Get total price")
-    public void getTotalPrice() {
         expectedPriceTotal = billingPage.getTotalPrice();
     }
 
