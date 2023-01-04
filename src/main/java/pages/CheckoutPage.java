@@ -1,11 +1,8 @@
 package pages;
 
+import driver.ShopWaitings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class CheckoutPage {
     private static final By PURCHASE_EMAIL = By.xpath("(//input[@class='users-session-form__input users-session-form__input--text'])[2]");
@@ -16,13 +13,11 @@ public class CheckoutPage {
         this.driver = driver;
     }
     public boolean checkoutPageIsOpened(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PURCHASE_EMAIL));
+        ShopWaitings.enterElementTime(driver, PURCHASE_EMAIL, 10);
         return true;
     }
     public void purchaseEnterEmail(String email){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PURCHASE_EMAIL));
+        ShopWaitings.enterElementTime(driver, PURCHASE_EMAIL, 10);
         driver.findElement(PURCHASE_EMAIL).sendKeys(email);
     }
     public void pressButtonAfterEmail(){

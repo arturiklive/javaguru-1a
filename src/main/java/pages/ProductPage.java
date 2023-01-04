@@ -1,12 +1,9 @@
 package pages;
 
+import driver.ShopJsClicks;
+import driver.ShopWaitings;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class ProductPage {
     private static final By PRODUCT_VALIDATE_SPACE = By.xpath("//div[@class='product-righter google-rich-snippet']");
@@ -21,33 +18,26 @@ public class ProductPage {
         this.driver = driver;
     }
     public boolean isDisplayed(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_VALIDATE_SPACE));
+        ShopWaitings.enterElementTime(driver, PRODUCT_VALIDATE_SPACE, 10);
         return true;
     }
     public void addProductToCart(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_ADD_LINK));
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click();", driver.findElement(PRODUCT_ADD_LINK));
+        ShopWaitings.enterElementTime(driver, PRODUCT_ADD_LINK, 10);
+        ShopJsClicks.javaScriptClick(driver, PRODUCT_ADD_LINK);
     }
     public String getProductName(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_NAME_LINK));
+        ShopWaitings.enterElementTime(driver, PRODUCT_NAME_LINK, 10);
         return driver.findElement(PRODUCT_NAME_LINK).getAttribute("innerHTML").replaceAll("[ \t\n\r]*", "");
     }
     public String getProductPrice(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_PRICE_LINK));
+        ShopWaitings.enterElementTime(driver, PRODUCT_PRICE_LINK, 10);
         return driver.findElement(PRODUCT_PRICE_LINK).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
     public boolean isPurchaseSucceed(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PURCHASE_VALIDATE_SPACE));
+        ShopWaitings.enterElementTime(driver, PURCHASE_VALIDATE_SPACE, 10);
         return true;
     }
     public void goToCartClick(){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click();", driver.findElement(GO_TO_CART_LINK));
+        ShopJsClicks.javaScriptClick(driver, GO_TO_CART_LINK);
     }
 }

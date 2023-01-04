@@ -1,11 +1,8 @@
 package pages;
 
+import driver.ShopWaitings;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class BillingPage {
     private static final By SELECT_PAY_IN_STORE = By.xpath("(//ul[@class='menu menu--checkout']//label)[2]");
@@ -16,18 +13,15 @@ public class BillingPage {
         this.driver = driver;
     }
     public boolean billingPageIsOpened(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SELECT_PAY_IN_STORE));
+        ShopWaitings.enterElementTime(driver, SELECT_PAY_IN_STORE, 10);
         return true;
     }
     public void selectPayInStore(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SELECT_PAY_IN_STORE));
+        ShopWaitings.enterElementTime(driver, SELECT_PAY_IN_STORE, 10);
         driver.findElement(SELECT_PAY_IN_STORE).click();
     }
     public String getTotalPrice(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(TOTAL_PRICE));
+        ShopWaitings.enterElementTime(driver, TOTAL_PRICE, 10);
         return driver.findElement(TOTAL_PRICE).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
 }

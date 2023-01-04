@@ -1,12 +1,9 @@
 package pages;
 
+import driver.ShopJsClicks;
+import driver.ShopWaitings;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class CartPage {
     private static final By PRODUCT_NAME_LINK = By.xpath("//a[@class='detailed-cart-item__name-link']");
@@ -18,8 +15,7 @@ public class CartPage {
         this.driver = driver;
     }
     public boolean cartIsOpened(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_NAME_LINK));
+        ShopWaitings.enterElementTime(driver, PRODUCT_NAME_LINK, 10);
         return true;
     }
     public String getProductNameInCart(){
@@ -29,7 +25,6 @@ public class CartPage {
         return driver.findElement(PRODUCT_PRICE_LINK).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
     public void setGoToCheckout(){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click();", driver.findElement(GO_TO_CHECKOUT_LINK));
+        ShopJsClicks.javaScriptClick(driver, GO_TO_CHECKOUT_LINK);
     }
 }

@@ -1,12 +1,9 @@
 package pages;
 
+import driver.ShopJsClicks;
+import driver.ShopWaitings;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class ShippingPage {
     private static final By GET_IN_STORE_LINK = By.xpath("(//ul[@class='menu menu--checkout']/li)[2]");
@@ -14,23 +11,21 @@ public class ShippingPage {
     private static final By PURCHASER_NAME = By.xpath("//input[@id='address_first_name']");
     private static final By PURCHASER_LASTNAME = By.xpath("//input[@id='address_last_name']");
     private static final By PURCHASER_PHONE = By.xpath("//input[@id='address_phone_number']");
-    private static final By BILLING_PAGE_LINK = By.cssSelector("button[type='submit']");
+    private static final By BILLING_PAGE_LINK = By.xpath("(//button[@type='submit'])[2]");
     private WebDriver driver;
 
     public ShippingPage(WebDriver driver) {
         this.driver = driver;
     }
     public boolean shippingPageIsOpened(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(GET_IN_STORE_LINK));
+        ShopWaitings.enterElementTime(driver, GET_IN_STORE_LINK, 10);
         return true;
     }
     public void selectGetInStore(){
         driver.findElement(GET_IN_STORE_LINK).click();
     }
     public void selectStore(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SELECT_STORE_LINK));
+        ShopWaitings.enterElementTime(driver, SELECT_STORE_LINK, 10);
         driver.findElement(SELECT_STORE_LINK).click();
     }
     public void enterPurchaserName(String name){
@@ -44,16 +39,12 @@ public class ShippingPage {
     }
     public void clickToSaveBeforeBilling() throws InterruptedException {
         Thread.sleep(2000);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.elementToBeClickable(BILLING_PAGE_LINK));
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click();", driver.findElement(BILLING_PAGE_LINK));
+        ShopWaitings.enterElementTime(driver, BILLING_PAGE_LINK, 10);
+        ShopJsClicks.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
     public void clickToBilling() throws InterruptedException {
         Thread.sleep(2000);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.elementToBeClickable(BILLING_PAGE_LINK));
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click();", driver.findElement(BILLING_PAGE_LINK));
+        ShopWaitings.enterElementTime(driver, BILLING_PAGE_LINK, 10);
+        ShopJsClicks.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
 }
