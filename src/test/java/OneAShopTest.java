@@ -33,8 +33,8 @@ public class OneAShopTest {
         ProductPage productPage = new ProductPage(driver);
         Assertions.assertThat(productPage.isDisplayed()).isTrue();
 
-        String getProductName = productPage.getProductName();
-        String getProductPrice = productPage.getProductPrice();
+        String actualProductName = productPage.getProductName();
+        String actualProductPrice = productPage.getProductPrice();
 
         productPage.addProductToCart();
         Assertions.assertThat(productPage.isPurchaseSucceed()).isTrue();
@@ -43,8 +43,8 @@ public class OneAShopTest {
         CartPage cartPage = new CartPage(driver);
         Assertions.assertThat(cartPage.cartIsOpened()).isTrue();
 
-        String getProductNameInCart = cartPage.getProductNameInCart();
-        String getProductPriceInCart = cartPage.getProductPriceInCart();
+        String expectedNameInCart = cartPage.getProductNameInCart();
+        String expectedPriceInCart = cartPage.getProductPriceInCart();
 
         cartPage.setGoToCheckout();
 
@@ -66,12 +66,12 @@ public class OneAShopTest {
         BillingPage billingPage = new BillingPage(driver);
         Assertions.assertThat(billingPage.billingPageIsOpened()).isTrue();
         billingPage.selectPayInStore();
-        String getProductTotalPrice = billingPage.getTotalPrice();
+        String expectedPriceTotal = billingPage.getTotalPrice();
 
         SoftAssertions soft = new SoftAssertions();
-        soft.assertThat(getProductNameInCart).contains(getProductName);
-        soft.assertThat(getProductPriceInCart).contains(getProductPrice);
-        soft.assertThat(getProductTotalPrice).contains(getProductPrice);
+        soft.assertThat(expectedNameInCart).contains(actualProductName);
+        soft.assertThat(expectedPriceInCart).contains(actualProductPrice);
+        soft.assertThat(expectedPriceTotal).contains(actualProductPrice);
         soft.assertAll();
 
         Thread.sleep(10000);

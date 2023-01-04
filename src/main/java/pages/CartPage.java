@@ -1,6 +1,6 @@
 package pages;
 
-import driver.ShopJsClicks;
+import driver.jsClickUtils;
 import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +25,6 @@ public class CartPage {
         return driver.findElement(PRODUCT_PRICE_LINK).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
     public void setGoToCheckout(){
-        ShopJsClicks.javaScriptClick(driver, GO_TO_CHECKOUT_LINK);
+        jsClickUtils.javaScriptClick(driver, GO_TO_CHECKOUT_LINK);
     }
 }

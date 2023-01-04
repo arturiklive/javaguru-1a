@@ -1,6 +1,6 @@
 package pages;
 
-import driver.ShopJsClicks;
+import driver.jsClickUtils;
 import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,11 +40,11 @@ public class ShippingPage {
     public void clickToSaveBeforeBilling() throws InterruptedException {
         Thread.sleep(2000);
         ShopWaitingUtils.waitUntilElem(driver, BILLING_PAGE_LINK, 10);
-        ShopJsClicks.javaScriptClick(driver, BILLING_PAGE_LINK);
+        jsClickUtils.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
     public void clickToBilling() throws InterruptedException {
         Thread.sleep(2000);
         ShopWaitingUtils.waitUntilElem(driver, BILLING_PAGE_LINK, 10);
-        ShopJsClicks.javaScriptClick(driver, BILLING_PAGE_LINK);
+        jsClickUtils.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
 }

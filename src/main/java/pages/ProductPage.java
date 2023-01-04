@@ -1,6 +1,6 @@
 package pages;
 
-import driver.ShopJsClicks;
+import driver.jsClickUtils;
 import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +23,7 @@ public class ProductPage {
     }
     public void addProductToCart(){
         ShopWaitingUtils.waitUntilElem(driver, PRODUCT_ADD_LINK, 10);
-        ShopJsClicks.javaScriptClick(driver, PRODUCT_ADD_LINK);
+        jsClickUtils.javaScriptClick(driver, PRODUCT_ADD_LINK);
     }
     public String getProductName(){
         ShopWaitingUtils.waitUntilElem(driver, PRODUCT_NAME_LINK, 10);
@@ -38,6 +38,6 @@ public class ProductPage {
         return true;
     }
     public void goToCartClick(){
-        ShopJsClicks.javaScriptClick(driver, GO_TO_CART_LINK);
+        jsClickUtils.javaScriptClick(driver, GO_TO_CART_LINK);
     }
 }

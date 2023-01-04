@@ -1,6 +1,6 @@
 package pages;
 
-import driver.ShopJsClicks;
+import driver.jsClickUtils;
 import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,10 +37,10 @@ public class SearchPage {
     public void selectBrand(String brand){
         String xpathLink = "//a[@class='ks-filter-link']//span[text()='"+brand+"']";
         ShopWaitingUtils.waitUntilElem(driver, By.xpath(xpathLink), 10);
-        ShopJsClicks.javaScriptClick(driver, By.xpath(xpathLink));
+        jsClickUtils.javaScriptClick(driver, By.xpath(xpathLink));
     }
     public void selectItem(){
         ShopWaitingUtils.waitUntilElem(driver, RANDOM_ITEM_LINK, 10);
-        ShopJsClicks.javaScriptClick(driver, RANDOM_ITEM_LINK);
+        jsClickUtils.javaScriptClick(driver, RANDOM_ITEM_LINK);
     }
 }
