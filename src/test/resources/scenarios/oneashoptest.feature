@@ -35,6 +35,6 @@ Feature: Purchasing 1 random item and verifying name and price
     Then Select Pay in Store option
     And Get total price
 
-    When Compare that product name contains name from cart
-    Then Compare that product price contains price from cart
-    Then Compare that total price contains product price
+    Then Compare that expected product name in checkout section contains purchased actual product name
+    Then Compare that expected product price in checkout section contains purchased actual product price
+    Then Compare that expected total price in paying section contains actual product price

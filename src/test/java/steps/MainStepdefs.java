@@ -1,6 +1,5 @@
 package steps;
 
-import driver.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -22,6 +21,12 @@ public class MainStepdefs {
     ShippingPage shippingPage = new ShippingPage(driver);
     BillingPage billingPage = new BillingPage(driver);
     SoftAssertions soft = new SoftAssertions();
+
+    public static String expectedNameInCart;
+    public static String expectedPriceInCart;
+    public static String expectedPriceTotal;
+    public static String actualProductName;
+    public static String actualProductPrice;
     @Before
     public void setUpDriver() {
         driver.manage().window().maximize();
@@ -52,13 +57,13 @@ public class MainStepdefs {
     }
 
     @Then("Get product name")
-    public String getProductName() {
-        return productPage.getProductName();
+    public void getProductName() {
+        actualProductName = productPage.getProductName();
     }
 
     @And("Get product price")
-    public String getProductPrice() {
-        return productPage.getProductPrice();
+    public void getProductPrice() {
+        actualProductPrice = productPage.getProductPrice();
     }
 
     @And("Add product to cart")
@@ -81,13 +86,13 @@ public class MainStepdefs {
     }
 
     @Then("Get product name in Cart")
-    public String getProductNameInCart() {
-        return cartPage.getProductNameInCart();
+    public void getProductNameInCart() {
+        expectedNameInCart = cartPage.getProductNameInCart();
     }
 
     @And("Get product price in Cart")
-    public String getProductPriceInCart() {
-        return cartPage.getProductPriceInCart();
+    public void getProductPriceInCart() {
+        expectedPriceInCart = cartPage.getProductPriceInCart();
     }
 
     @And("Click to go to Checkout Page")
@@ -161,32 +166,28 @@ public class MainStepdefs {
     }
 
     @And("Get total price")
-    public String getTotalPrice() {
-        return billingPage.getTotalPrice();
+    public void getTotalPrice() {
+        expectedPriceTotal = billingPage.getTotalPrice();
     }
 
-    @When("Compare that product name contains name from cart")
-    public void compareThatProductNameContainsNameFromCart() {
-        System.out.println(cartPage.getProductNameInCart());
-        System.out.println(productPage.getProductName());
-        soft.assertThat(cartPage.getProductNameInCart()).contains(productPage.getProductName());
+    @Then("Compare that expected product name in checkout section contains purchased actual product name")
+    public void compareThatProductNameInCheckoutSectionContainsPurchasedProductName() {
+        soft.assertThat(expectedNameInCart).contains(actualProductName);
     }
 
-    @Then("Compare that product price contains price from cart")
-    public void compareThatProductPriceContainsPriceFromCart() {
-        soft.assertThat(cartPage.getProductPriceInCart()).contains(productPage.getProductPrice());
+    @Then("Compare that expected product price in checkout section contains purchased actual product price")
+    public void compareThatProductPriceInCheckoutSectionContainsPurchasedProductPrice() {
+        soft.assertThat(expectedPriceInCart).contains(actualProductPrice);
     }
 
-    @Then("Compare that total price contains product price")
-    public void compareThatTotalPriceContainsProductPrice() {
-        soft.assertThat(billingPage.getTotalPrice()).contains(productPage.getProductPrice());
+    @Then("Compare that expected total price in paying section contains actual product price")
+    public void compareThatTotalPriceInPayingSectionContainsProductPrice() {
+        soft.assertThat(expectedPriceTotal).contains(actualProductPrice);
         soft.assertAll();
     }
-
     @After
     public void afterScenario() {
         driver.close();
         driver.quit();
     }
-
 }
