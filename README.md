@@ -5,6 +5,7 @@ QA Automatization project
 - Cucumber
 
 Main Task: Purchasing 1 random product and verifying name and price at billing step
+
 Test steps:
 
 1) Go to "https://www.1a.lv/"
