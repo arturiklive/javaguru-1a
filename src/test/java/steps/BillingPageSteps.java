@@ -9,6 +9,7 @@ import static driver.DriverProvider.driver;
 
 public class BillingPageSteps {
     BillingPage billingPage = new BillingPage(driver());
+
     @Then("Verify if Billing Page is opened")
     public void verifyIfBillingPageIsOpened() {
         Assertions.assertThat(billingPage.billingPageIsOpened()).isTrue();

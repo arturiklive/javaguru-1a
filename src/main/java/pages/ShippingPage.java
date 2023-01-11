@@ -12,7 +12,7 @@ public class ShippingPage {
     private static final By PURCHASER_LASTNAME = By.xpath("//input[@id='address_last_name']");
     private static final By PURCHASER_PHONE = By.xpath("//input[@id='address_phone_number']");
     private static final By BILLING_PAGE_LINK = By.xpath("(//button[@type='submit'])[2]");
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ShippingPage(WebDriver driver) {
         this.driver = driver;

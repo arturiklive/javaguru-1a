@@ -4,12 +4,12 @@ import io.cucumber.java.en.Then;
 import org.assertj.core.api.SoftAssertions;
 
 public class MainPageSteps {
-    SoftAssertions soft = new SoftAssertions();
     public static String expectedNameInCart;
     public static String expectedPriceInCart;
     public static String expectedPriceTotal;
     public static String actualProductName;
     public static String actualProductPrice;
+    SoftAssertions soft = new SoftAssertions();
 
     @Then("Compare that expected product name in checkout section contains purchased actual product name")
     public void compareThatProductNameInCheckoutSectionContainsPurchasedProductName() {

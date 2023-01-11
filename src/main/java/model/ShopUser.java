@@ -2,17 +2,15 @@ package model;
 
 public class ShopUser {
 
-    private String name;
-    private String lastName;
-    private String email;
-    private String password;
-    private String phoneNumber;
+    private final String name;
+    private final String lastName;
+    private final String email;
+    private final String phoneNumber;
 
-    public ShopUser(String name, String lastName, String email, String password, String phoneNumber) {
+    public ShopUser(String name, String lastName, String email, String phoneNumber) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.phoneNumber = phoneNumber;
     }
 
@@ -26,10 +24,6 @@ public class ShopUser {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getPhoneNumber() {

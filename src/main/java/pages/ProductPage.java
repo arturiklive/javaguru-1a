@@ -12,7 +12,7 @@ public class ProductPage {
     private static final By PRODUCT_NAME_LINK = By.tagName("h1");
     private static final By PRODUCT_PRICE_LINK = By.xpath("(//span[@class='price']/span)[1]");
     private static final By GO_TO_CART_LINK = By.xpath("//a[@class='main-button']");
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;

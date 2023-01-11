@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class BillingPage {
     private static final By SELECT_PAY_IN_STORE = By.xpath("(//ul[@class='menu menu--checkout']//label)[2]");
     private static final By TOTAL_PRICE = By.xpath("//span[@class='checkout-order-summary-total__price']");
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public BillingPage(WebDriver driver) {
         this.driver = driver;

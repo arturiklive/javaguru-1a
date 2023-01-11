@@ -1,5 +1,7 @@
 # javaguru-1a
+
 QA Automatization project
+
 - Java
 - Selenium
 - Cucumber

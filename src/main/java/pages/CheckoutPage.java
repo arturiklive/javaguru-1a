@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class CheckoutPage {
     private static final By PURCHASE_EMAIL = By.xpath("(//input[@class='users-session-form__input users-session-form__input--text'])[2]");
     private static final By BUTTON_AFTER_EMAIL = By.xpath("(//input[@class='users-session-form__submit'])[2]");
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;

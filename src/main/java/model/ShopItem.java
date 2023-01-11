@@ -1,8 +1,8 @@
 package model;
 
 public class ShopItem {
-    private String itemType;
-    private String brand;
+    private final String itemType;
+    private final String brand;
 
     public ShopItem(String itemType, String brand) {
         this.itemType = itemType;

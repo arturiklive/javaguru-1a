@@ -9,7 +9,7 @@ public class CartPage {
     private static final By PRODUCT_NAME_LINK = By.xpath("//a[@class='detailed-cart-item__name-link']");
     private static final By PRODUCT_PRICE_LINK = By.xpath("//td[@id='cart-full-total-price']");
     private static final By GO_TO_CHECKOUT_LINK = By.xpath("//input[@class='main-button cart-main-button cart-main-button--large']");
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public CartPage(WebDriver driver) {
         this.driver = driver;

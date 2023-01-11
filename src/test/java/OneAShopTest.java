@@ -21,7 +21,7 @@ public class OneAShopTest {
     @Test
     public void buyItemTest() throws InterruptedException {
 
-        ShopUser user = new ShopUser("Arturs", "Tehnique", "tehnique111@inbox.lv", "tests123", "29999999");
+        ShopUser user = new ShopUser("Arturs", "Tehnique", "tehnique111@inbox.lv", "29999999");
         ShopItem item = new ShopItem("laptop", "Asus");
 
         SearchPage searchPage = new SearchPage(driver);
