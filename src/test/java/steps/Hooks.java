@@ -10,6 +10,7 @@ public class Hooks {
     public void setUpDriver() {
         driver().manage().window().maximize();
     }
+
     @After
     public void afterScenario() {
         driver().close();

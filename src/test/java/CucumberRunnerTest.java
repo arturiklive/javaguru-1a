@@ -1,9 +1,10 @@
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = {"pretty"},
-        features={"src/test/resources/scenarios"},
+        features = {"src/test/resources/scenarios"},
         glue = {"src/test/java/steps"})
 public class CucumberRunnerTest {
 }

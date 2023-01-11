@@ -12,15 +12,18 @@ public class CheckoutPage {
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
     }
-    public boolean checkoutPageIsOpened(){
+
+    public boolean checkoutPageIsOpened() {
         ShopWaitingUtils.waitUntilElem(driver, PURCHASE_EMAIL, 10);
         return true;
     }
-    public void purchaseEnterEmail(String email){
+
+    public void purchaseEnterEmail(String email) {
         ShopWaitingUtils.waitUntilElem(driver, PURCHASE_EMAIL, 10);
         driver.findElement(PURCHASE_EMAIL).sendKeys(email);
     }
-    public void pressButtonAfterEmail(){
+
+    public void pressButtonAfterEmail() {
         if (driver.findElement(BUTTON_AFTER_EMAIL).isDisplayed()) {
             driver.findElement(BUTTON_AFTER_EMAIL).click();
         }

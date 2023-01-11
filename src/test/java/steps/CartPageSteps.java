@@ -9,6 +9,7 @@ import static driver.DriverProvider.driver;
 
 public class CartPageSteps {
     CartPage cartPage = new CartPage(driver());
+
     @Then("Verify if Cart Page is opened")
     public void verifyIfCartPageIsOpened() {
         Assertions.assertThat(cartPage.cartIsOpened()).isTrue();

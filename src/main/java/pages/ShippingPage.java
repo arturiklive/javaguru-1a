@@ -1,6 +1,6 @@
 package pages;
 
-import driver.jsClickUtils;
+import driver.JsClickUtils;
 import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,34 +17,42 @@ public class ShippingPage {
     public ShippingPage(WebDriver driver) {
         this.driver = driver;
     }
-    public boolean shippingPageIsOpened(){
+
+    public boolean shippingPageIsOpened() {
         ShopWaitingUtils.waitUntilElem(driver, GET_IN_STORE_LINK, 10);
         return true;
     }
-    public void selectGetInStore(){
+
+    public void selectGetInStore() {
         driver.findElement(GET_IN_STORE_LINK).click();
     }
-    public void selectStore(){
+
+    public void selectStore() {
         ShopWaitingUtils.waitUntilElem(driver, SELECT_STORE_LINK, 10);
         driver.findElement(SELECT_STORE_LINK).click();
     }
-    public void enterPurchaserName(String name){
+
+    public void enterPurchaserName(String name) {
         driver.findElement(PURCHASER_NAME).sendKeys(name);
     }
-    public void enterPurchaserLastname(String lastname){
+
+    public void enterPurchaserLastname(String lastname) {
         driver.findElement(PURCHASER_LASTNAME).sendKeys(lastname);
     }
-    public void enterPurchaserPhone(String phone){
+
+    public void enterPurchaserPhone(String phone) {
         driver.findElement(PURCHASER_PHONE).sendKeys(phone);
     }
+
     public void clickToSaveBeforeBilling() throws InterruptedException {
         Thread.sleep(2000);
         ShopWaitingUtils.waitUntilElem(driver, BILLING_PAGE_LINK, 10);
-        jsClickUtils.javaScriptClick(driver, BILLING_PAGE_LINK);
+        JsClickUtils.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
+
     public void clickToBilling() throws InterruptedException {
         Thread.sleep(2000);
         ShopWaitingUtils.waitUntilElem(driver, BILLING_PAGE_LINK, 10);
-        jsClickUtils.javaScriptClick(driver, BILLING_PAGE_LINK);
+        JsClickUtils.javaScriptClick(driver, BILLING_PAGE_LINK);
     }
 }

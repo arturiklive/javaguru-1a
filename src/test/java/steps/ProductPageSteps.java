@@ -10,6 +10,7 @@ import static driver.DriverProvider.driver;
 
 public class ProductPageSteps {
     ProductPage productPage = new ProductPage(driver());
+
     @Then("Verify if Product Page is opened")
     public void verifyIfProductPageIsOpened() {
         Assertions.assertThat(productPage.isDisplayed()).isTrue();
@@ -21,6 +22,7 @@ public class ProductPageSteps {
     public void addProductToCart() {
         productPage.addProductToCart();
     }
+
     @And("Verify if purchase is succeed")
     public void verifyIfPurchaseIsSucceed() {
         Assertions.assertThat(productPage.isPurchaseSucceed()).isTrue();

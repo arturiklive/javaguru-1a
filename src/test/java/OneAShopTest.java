@@ -73,8 +73,6 @@ public class OneAShopTest {
         soft.assertThat(expectedPriceInCart).contains(actualProductPrice);
         soft.assertThat(expectedPriceTotal).contains(actualProductPrice);
         soft.assertAll();
-
-        Thread.sleep(10000);
     }
 
     @After

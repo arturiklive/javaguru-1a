@@ -12,15 +12,18 @@ public class BillingPage {
     public BillingPage(WebDriver driver) {
         this.driver = driver;
     }
-    public boolean billingPageIsOpened(){
+
+    public boolean billingPageIsOpened() {
         ShopWaitingUtils.waitUntilElem(driver, SELECT_PAY_IN_STORE, 10);
         return true;
     }
-    public void selectPayInStore(){
+
+    public void selectPayInStore() {
         ShopWaitingUtils.waitUntilElem(driver, SELECT_PAY_IN_STORE, 10);
         driver.findElement(SELECT_PAY_IN_STORE).click();
     }
-    public String getTotalPrice(){
+
+    public String getTotalPrice() {
         ShopWaitingUtils.waitUntilElem(driver, TOTAL_PRICE, 10);
         return driver.findElement(TOTAL_PRICE).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }

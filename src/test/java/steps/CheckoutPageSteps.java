@@ -10,6 +10,7 @@ import static driver.DriverProvider.driver;
 
 public class CheckoutPageSteps {
     CheckoutPage checkoutPage = new CheckoutPage(driver());
+
     @Then("Verify if Checkout Page is opened")
     public void verifyIfCheckoutPageIsOpened() {
         Assertions.assertThat(checkoutPage.checkoutPageIsOpened()).isTrue();

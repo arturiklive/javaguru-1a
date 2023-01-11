@@ -1,6 +1,6 @@
 package pages;
 
-import driver.jsClickUtils;
+import driver.JsClickUtils;
 import driver.ShopWaitingUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,17 +14,21 @@ public class CartPage {
     public CartPage(WebDriver driver) {
         this.driver = driver;
     }
-    public boolean cartIsOpened(){
+
+    public boolean cartIsOpened() {
         ShopWaitingUtils.waitUntilElem(driver, PRODUCT_NAME_LINK, 10);
         return true;
     }
-    public String getProductNameInCart(){
+
+    public String getProductNameInCart() {
         return driver.findElement(PRODUCT_NAME_LINK).getAttribute("innerHTML").replaceAll("[ \t\n\r]*", "");
     }
-    public String getProductPriceInCart(){
+
+    public String getProductPriceInCart() {
         return driver.findElement(PRODUCT_PRICE_LINK).getText().replaceAll("[ \t\n\r]*", "").replace("€", "");
     }
-    public void setGoToCheckout(){
-        jsClickUtils.javaScriptClick(driver, GO_TO_CHECKOUT_LINK);
+
+    public void setGoToCheckout() {
+        JsClickUtils.javaScriptClick(driver, GO_TO_CHECKOUT_LINK);
     }
 }

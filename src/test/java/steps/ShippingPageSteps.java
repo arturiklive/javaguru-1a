@@ -10,6 +10,7 @@ import static driver.DriverProvider.driver;
 
 public class ShippingPageSteps {
     ShippingPage shippingPage = new ShippingPage(driver());
+
     @Then("Verify if Shipping Page is opened")
     public void verifyIfShippingPageIsOpened() {
         Assertions.assertThat(shippingPage.shippingPageIsOpened()).isTrue();
